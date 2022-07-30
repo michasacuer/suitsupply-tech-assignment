@@ -1,6 +1,4 @@
-﻿using Suitsupply.Alteration.Domain.CustomerRequestAggregate;
-
-namespace Suitsupply.Alteration.Api.Dtos;
+﻿namespace Suitsupply.Alteration.Api.Dtos;
 
 public class CustomerRequestDto
 {
@@ -22,5 +20,5 @@ public class CustomerRequestDto
     
     public bool IsPaid { get; set; } 
 
-    public RequestStatus Status { get; set; } 
+    public string Status { get; set; } 
 }

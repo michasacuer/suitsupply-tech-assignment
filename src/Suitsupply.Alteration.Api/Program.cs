@@ -5,6 +5,7 @@ using Microsoft.Identity.Web;
 using Suitsupply.Alteration.Common.Interfaces;
 using Suitsupply.Alteration.Domain.CustomerRequestAggregate;
 using Suitsupply.Alteration.Infrastructure.Common;
+using Suitsupply.Alteration.Infrastructure.MassTransit;
 using Suitsupply.Alteration.Infrastructure.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,8 +20,9 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-builder.Configuration.AddAzureKeyVault(new Uri(builder.Configuration["KeyVault:Uri"]), new DefaultAzureCredential());
+builder.Services.AddMassTransitOrderPaidConsumer(builder.Configuration);
 
+builder.Configuration.AddAzureKeyVault(new Uri(builder.Configuration["KeyVault:Uri"]), new DefaultAzureCredential());
 builder.Services.AddScoped(_ =>
 {
     var tableServiceClient = new TableServiceClient(new Uri(builder.Configuration["TableStorage:Uri"]), new DefaultAzureCredential());
@@ -28,6 +30,8 @@ builder.Services.AddScoped(_ =>
     
     return tableServiceClient.GetTableClient(builder.Configuration["TableStorage:TableName"]);
 });
+
+
 
 builder.Services.AddScoped<ICustomerRequestRepository, CustomerRequestRepository>();
 

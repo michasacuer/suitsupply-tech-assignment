@@ -1,4 +1,5 @@
 ﻿using MassTransit;
+using Suitsupply.Alteration.Common.Exceptions;
 using Suitsupply.Alteration.Common.Utils;
 using Suitsupply.Alteration.Domain.CustomerRequestAggregate;
 
@@ -17,12 +18,17 @@ public class OrderPaidConsumer : IConsumer<OrderPaidMessage>
     {
         var message = context.Message;
         Ensure.StringNotNullOrEmpty(message.Id, nameof(message.Id));
-        Ensure.StringNotNullOrEmpty(message.Id, nameof(message.Id));
+        Ensure.StringNotNullOrEmpty(message.ShopId, nameof(message.ShopId));
         Ensure.DateTimeNotEmpty(message.PaidAt, nameof(message.PaidAt));
 
         var customerRequest = await _customerRequestRepository.GetCustomerRequestByIdAsync(new Guid(message.Id), message.ShopId);
         Ensure.NotNull(customerRequest, nameof(customerRequest));
         
         customerRequest.Paid(message.PaidAt);
+        bool isUpdated = await _customerRequestRepository.UpdateCustomerRequestToPaidAsync(message.Id, message.ShopId, message.PaidAt);
+        if (!isUpdated)
+        {
+            throw new SuitsupplyBusinessException("Can't update customer's request.");
+        }
     }
 }

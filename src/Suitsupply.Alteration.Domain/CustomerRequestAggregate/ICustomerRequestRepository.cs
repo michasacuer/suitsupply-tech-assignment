@@ -6,7 +6,7 @@ public interface ICustomerRequestRepository
     
     Task<CustomerRequest> GetCustomerRequestByIdAsync(Guid id, string shopId);
 
-    Task UpdateCustomerRequestAsync(CustomerRequest request);
+    Task<bool> UpdateCustomerRequestToPaidAsync(string id, string shopId, DateTime paidAt);
 
-    Task<bool> SendCustomerRequestAsync(CustomerRequest request);
+    Task<bool> SendCustomerRequestAsync(CustomerRequest customerRequest);
 }

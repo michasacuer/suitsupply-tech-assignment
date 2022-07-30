@@ -1,4 +1,5 @@
-﻿using Azure.Data.Tables;
+﻿using Azure;
+using Azure.Data.Tables;
 using Suitsupply.Alteration.Domain.CustomerRequestAggregate;
 using Suitsupply.Alteration.Infrastructure.Model;
 
@@ -27,14 +28,19 @@ public class CustomerRequestRepository : ICustomerRequestRepository
     public async Task<CustomerRequest> GetCustomerRequestByIdAsync(Guid id, string shopId)
         => await _tableClient.GetEntityAsync<CustomerRequestModel>(shopId, id.ToString());
 
-    public Task UpdateCustomerRequestAsync(CustomerRequest request)
+    public async Task<bool> UpdateCustomerRequestToPaidAsync(string id, string shopId, DateTime paidAt)
     {
-        throw new NotImplementedException();
+        var customerRequest = await _tableClient.GetEntityAsync<CustomerRequestModel>(shopId, id);
+        customerRequest.Value.Paid(paidAt);
+
+        var result = await _tableClient.UpdateEntityAsync(customerRequest.Value, ETag.All);
+
+        return !result.IsError;
     }
 
-    public async Task<bool> SendCustomerRequestAsync(CustomerRequest request)
+    public async Task<bool> SendCustomerRequestAsync(CustomerRequest customerRequest)
     {
-        var customerRequestModel = new CustomerRequestModel(request);
+        var customerRequestModel = new CustomerRequestModel(customerRequest);
         var result = await _tableClient.AddEntityAsync(customerRequestModel);
 
         return !result.IsError;
