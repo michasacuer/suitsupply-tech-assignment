@@ -1,11 +1,10 @@
 ﻿using Azure;
 using Azure.Data.Tables;
-using Suitsupply.Alteration.Domain.AlterationAggregate;
 using Suitsupply.Alteration.Domain.CustomerRequestAggregate;
 
 namespace Suitsupply.Alteration.Infrastructure.Model;
 
-public record CustomerRequestModel : CustomerRequest, ITableEntity
+public class CustomerRequestModel : CustomerRequest, ITableEntity
 {
     public CustomerRequestModel()
     {
@@ -23,17 +22,6 @@ public record CustomerRequestModel : CustomerRequest, ITableEntity
         IsPaid = request.IsPaid;
         PaidAt = request.PaidAt;
         FinishedAt = request.FinishedAt;
-    }
-
-    public CustomerRequestModel(
-        string shopId,
-        string customerName,
-        string customerEmail,
-        IAlterationInfo alterationInfo,
-        DateTime createdAt,
-        string payload)
-        : base(shopId, customerName, customerEmail, alterationInfo, createdAt, payload)
-    {
     }
 
     public string PartitionKey

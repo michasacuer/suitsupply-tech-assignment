@@ -1,4 +1,6 @@
-﻿namespace Suitsupply.Alteration.Api.Dtos;
+﻿using System.Text.Json.Serialization;
+
+namespace Suitsupply.Alteration.Api.Dtos;
 
 public class CustomerRequestDto
 {
@@ -14,8 +16,10 @@ public class CustomerRequestDto
 
     public DateTime CreatedAt { get; set; } 
 
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public DateTime? FinishedAt { get; set; } 
 
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public DateTime? PaidAt { get; set; } 
     
     public bool IsPaid { get; set; } 
