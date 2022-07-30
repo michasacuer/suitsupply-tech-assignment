@@ -2,5 +2,9 @@
 
 public interface ICustomerRequestRepository
 {
-    Task<CustomerRequest> GetCustomerRequestByIdAsync(Guid id);
+    Task<List<CustomerRequest>> GetAllCustomerRequestsAsync(string shopId);
+    
+    Task<CustomerRequest> GetCustomerRequestByIdAsync(Guid id, string shopId);
+
+    Task UpdateCustomerRequest(CustomerRequest request);
 }

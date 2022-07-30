@@ -20,7 +20,11 @@ public class ShortenInfoTests
         -ShortenInfo.MaxAlternationDifferenceInCentimeters,
         -ShortenInfo.MaxAlternationDifferenceInCentimeters,
         -ShortenInfo.MaxAlternationDifferenceInCentimeters)]
-    public void ShortenInfo_Ctor_DataValid_ObjectCreated(int leftTrouserLeg, int rightTrouserLeg, int leftSleeve, int rightSleeve)
+    public void ShortenInfo_Ctor_DataValid_ObjectCreated(
+        int leftTrouserLeg,
+        int rightTrouserLeg,
+        int leftSleeve,
+        int rightSleeve)
     {
         // Arrange & Act:
         var o = new ShortenInfo(leftTrouserLeg, rightTrouserLeg, leftSleeve, rightSleeve);
@@ -40,7 +44,11 @@ public class ShortenInfoTests
         -ShortenInfo.MaxAlternationDifferenceInCentimeters - 2,
         -ShortenInfo.MaxAlternationDifferenceInCentimeters - 3,
         -ShortenInfo.MaxAlternationDifferenceInCentimeters - 1)]
-    public void ShortenInfo_Ctor_AlternationsBiggerThanMax_ThrowNew_SuitSupplyBusinessException(int leftTrouserLeg, int rightTrouserLeg, int leftSleeve, int rightSleeve)
+    public void ShortenInfo_Ctor_AlternationsBiggerThanMax_ThrowNew_SuitSupplyBusinessException(
+        int leftTrouserLeg,
+        int rightTrouserLeg,
+        int leftSleeve,
+        int rightSleeve)
     {
         // Arrange & Act & Assert:
         Assert.Throws<SuitsupplyBusinessException>(

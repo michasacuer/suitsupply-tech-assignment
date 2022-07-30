@@ -2,5 +2,5 @@
 
 public interface IClock
 {
-    DateTime Now { get; set; }
+    DateTime Now { get; }
 }

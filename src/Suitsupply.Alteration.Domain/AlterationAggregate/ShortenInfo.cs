@@ -12,7 +12,7 @@ public class ShortenInfo : IAlterationInfo
         int leftSleeveShortenBy,
         int rightSleeveShortenBy)
     {
-        IsDataValid(leftTrouserLegShortenBy, rightTrouserLegShortenBy, leftSleeveShortenBy, rightSleeveShortenBy);
+        CheckIfShortenDataIsValid(leftTrouserLegShortenBy, rightTrouserLegShortenBy, leftSleeveShortenBy, rightSleeveShortenBy);
         
         LeftTrouserLegShortenBy = leftTrouserLegShortenBy;
         RightTrouserLegShortenBy = rightTrouserLegShortenBy;
@@ -57,7 +57,7 @@ public class ShortenInfo : IAlterationInfo
         return string.Join(separator, alterations);
     }
 
-    private void IsDataValid(params int[] shortenBy)
+    private void CheckIfShortenDataIsValid(params int[] shortenBy)
     {
         if (IsAllAlternationsEmpty(shortenBy))
         {

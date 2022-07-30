@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suitsupply.Alteration.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suitsupply.Alteration.Common", "Suitsupply.Alteration.Common\Suitsupply.Alteration.Common.csproj", "{A974347A-AD24-424A-9168-0A34929D27B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Suitsupply.Alteration.Api", "Suitsupply.Alteration.Api\Suitsupply.Alteration.Api.csproj", "{19661945-ABBC-409F-BA7D-BB77C1BEEEB9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{A974347A-AD24-424A-9168-0A34929D27B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A974347A-AD24-424A-9168-0A34929D27B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A974347A-AD24-424A-9168-0A34929D27B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19661945-ABBC-409F-BA7D-BB77C1BEEEB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19661945-ABBC-409F-BA7D-BB77C1BEEEB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19661945-ABBC-409F-BA7D-BB77C1BEEEB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19661945-ABBC-409F-BA7D-BB77C1BEEEB9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

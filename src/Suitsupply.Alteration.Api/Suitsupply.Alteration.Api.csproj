@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoMapper" Version="11.0.1" />
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+        <PackageReference Include="Azure.Data.Tables" Version="12.6.1" />
+        <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.2.2" />
+        <PackageReference Include="MediatR" Version="10.0.1" />
+        <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.4" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.4" />
+        <PackageReference Include="Microsoft.Identity.Web" Version="1.16.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Commands\NewAlternationRequest" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Suitsupply.Alteration.Domain\Suitsupply.Alteration.Domain.csproj" />
+      <ProjectReference Include="..\Suitsupply.Alteration.Infrastructure\Suitsupply.Alteration.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>
