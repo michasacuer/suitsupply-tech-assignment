@@ -2,7 +2,9 @@ using Azure.Data.Tables;
 using Azure.Identity;
 using MediatR;
 using Microsoft.Identity.Web;
+using Suitsupply.Alteration.Common.Interfaces;
 using Suitsupply.Alteration.Domain.CustomerRequestAggregate;
+using Suitsupply.Alteration.Infrastructure.Common;
 using Suitsupply.Alteration.Infrastructure.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,6 +30,15 @@ builder.Services.AddScoped(_ =>
 });
 
 builder.Services.AddScoped<ICustomerRequestRepository, CustomerRequestRepository>();
+
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddSingleton<IClock, DebugClock>();
+}
+else
+{
+    builder.Services.AddSingleton<IClock, Clock>();
+}
 
 var app = builder.Build();
 

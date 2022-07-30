@@ -5,7 +5,7 @@ using Suitsupply.Alteration.Domain.AlterationAggregate;
 
 namespace Suitsupply.Alteration.Domain.CustomerRequestAggregate;
 
-public class CustomerRequest : IBaseEntity<Guid>
+public record CustomerRequest : IBaseEntity<Guid>
 {
     public CustomerRequest()
     {
@@ -47,13 +47,13 @@ public class CustomerRequest : IBaseEntity<Guid>
 
     public DateTime CreatedAt { get; init; }
 
-    public DateTime? FinishedAt { get; private set; }
+    public DateTime? FinishedAt { get; protected set; }
 
-    public DateTime? PaidAt { get; private set; }
+    public DateTime? PaidAt { get; protected set; }
     
-    public bool IsPaid { get; private set; }
+    public bool IsPaid { get; protected set; }
 
-    public RequestStatus Status { get; private set; } = RequestStatus.Accepted;
+    public RequestStatus Status { get; protected set; } = RequestStatus.Accepted;
 
     public void Paid(DateTime paidAt)
     {

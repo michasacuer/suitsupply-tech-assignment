@@ -16,10 +16,7 @@
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.4" />
         <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.4" />
         <PackageReference Include="Microsoft.Identity.Web" Version="1.16.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Commands\NewAlternationRequest" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     </ItemGroup>
 
     <ItemGroup>

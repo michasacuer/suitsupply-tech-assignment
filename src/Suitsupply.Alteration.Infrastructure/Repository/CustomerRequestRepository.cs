@@ -25,10 +25,18 @@ public class CustomerRequestRepository : ICustomerRequestRepository
     }
 
     public async Task<CustomerRequest> GetCustomerRequestByIdAsync(Guid id, string shopId)
-        => _tableClient.GetEntity<CustomerRequestModel>(shopId, id.ToString());
+        => await _tableClient.GetEntityAsync<CustomerRequestModel>(shopId, id.ToString());
 
-    public Task UpdateCustomerRequest(CustomerRequest request)
+    public Task UpdateCustomerRequestAsync(CustomerRequest request)
     {
         throw new NotImplementedException();
+    }
+
+    public async Task<bool> SendCustomerRequestAsync(CustomerRequest request)
+    {
+        var customerRequestModel = new CustomerRequestModel(request);
+        var result = await _tableClient.AddEntityAsync(customerRequestModel);
+
+        return !result.IsError;
     }
 }
