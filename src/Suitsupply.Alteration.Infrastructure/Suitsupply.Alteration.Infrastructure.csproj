@@ -18,6 +18,7 @@
       <PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="8.0.5" />
       <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.3.1" />
       <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.5" />
+      <PackageReference Include="SendGrid" Version="9.28.0" />
     </ItemGroup>
 
 </Project>

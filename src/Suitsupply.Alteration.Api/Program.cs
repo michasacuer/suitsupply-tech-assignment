@@ -2,9 +2,11 @@ using Azure.Data.Tables;
 using Azure.Identity;
 using MediatR;
 using Microsoft.Identity.Web;
+using SendGrid.Extensions.DependencyInjection;
 using Suitsupply.Alteration.Common.Interfaces;
 using Suitsupply.Alteration.Domain.CustomerRequestAggregate;
 using Suitsupply.Alteration.Infrastructure.Common;
+using Suitsupply.Alteration.Infrastructure.EmailSender;
 using Suitsupply.Alteration.Infrastructure.MassTransit;
 using Suitsupply.Alteration.Infrastructure.Repository;
 
@@ -31,7 +33,11 @@ builder.Services.AddScoped(_ =>
     return tableServiceClient.GetTableClient(builder.Configuration["TableStorage:TableName"]);
 });
 
-
+builder.Services.AddSendGrid(options =>
+{
+    options.ApiKey = builder.Configuration.GetConnectionString("SendGrid");
+});
+builder.Services.AddScoped<IEmailService, SendGridEmailService>();
 
 builder.Services.AddScoped<ICustomerRequestRepository, CustomerRequestRepository>();
 
