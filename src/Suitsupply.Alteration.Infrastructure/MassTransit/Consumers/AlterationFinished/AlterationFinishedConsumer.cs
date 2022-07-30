@@ -1,4 +1,5 @@
 ﻿using MassTransit;
+using Suitsupply.Alteration.Common.Exceptions;
 using Suitsupply.Alteration.Common.Utils;
 using Suitsupply.Alteration.Domain.CustomerRequestAggregate;
 using Suitsupply.Alteration.Infrastructure.EmailSender;
@@ -23,10 +24,15 @@ public class AlterationFinishedConsumer : IConsumer<AlterationFinishedMessage>
         Ensure.StringNotNullOrEmpty(message.Id, nameof(message.Id));
         Ensure.DateTimeNotEmpty(message.FinishedAt, nameof(message.FinishedAt));
 
-        var customerRequest = await _customerRequestRepository.GetCustomerRequestByIdAsync(new Guid(message.Id), message.ShopId);
+        bool isUpdated = await _customerRequestRepository.FinishCustomerRequestAsync(message.Id, message.ShopId, message.FinishedAt);
+        if(!isUpdated)
+        {
+            throw new SuitsupplyBusinessException("Can't update entity.");
+        }
+
+        var customerRequest = await _customerRequestRepository.GetCustomerRequestByIdAsync(message.Id, message.ShopId);
         Ensure.NotNull(customerRequest, nameof(customerRequest));
         
-        customerRequest.Finished(message.FinishedAt);
         await _emailService.SendEmailAsync(customerRequest.CustomerEmail, $"Dear {customerRequest.CustomerName} your order is finished.", "Alteration finished!");
     }
 }

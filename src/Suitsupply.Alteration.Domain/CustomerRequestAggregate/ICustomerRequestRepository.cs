@@ -4,9 +4,11 @@ public interface ICustomerRequestRepository
 {
     Task<List<CustomerRequest>> GetAllCustomerRequestsAsync(string shopId);
     
-    Task<CustomerRequest> GetCustomerRequestByIdAsync(Guid id, string shopId);
+    Task<CustomerRequest> GetCustomerRequestByIdAsync(string id, string shopId);
 
     Task<bool> UpdateCustomerRequestToPaidAsync(string id, string shopId, DateTime paidAt);
+    
+    Task<bool> FinishCustomerRequestAsync(string id, string shopId, DateTime finishedAt);
 
     Task<bool> SendCustomerRequestAsync(CustomerRequest customerRequest);
 }

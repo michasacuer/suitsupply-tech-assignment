@@ -26,17 +26,24 @@ public class CustomerRequestRepository : ICustomerRequestRepository
         return response;
     }
 
-    public async Task<CustomerRequest> GetCustomerRequestByIdAsync(Guid id, string shopId)
+    public async Task<CustomerRequest> GetCustomerRequestByIdAsync(string id, string shopId)
         => await _tableClient.GetEntityAsync<CustomerRequestModel>(shopId, id.ToString());
 
     public async Task<bool> UpdateCustomerRequestToPaidAsync(string id, string shopId, DateTime paidAt)
     {
-        var response = await _tableClient.GetEntityAsync<CustomerRequestModel>(shopId, id);
-        
-        var customerRequest = response.Value;
-        Ensure.NotNull(customerRequest, nameof(customerRequest));
+        var customerRequest = await GetEntityAsync(id, shopId);
         
         customerRequest.Paid(paidAt);
+        var result = await _tableClient.UpdateEntityAsync(customerRequest, ETag.All);
+
+        return !result.IsError;
+    }
+
+    public async Task<bool> FinishCustomerRequestAsync(string id, string shopId, DateTime finishedAt)
+    {
+        var customerRequest = await GetEntityAsync(id, shopId);
+
+        customerRequest.Finished(finishedAt);
         var result = await _tableClient.UpdateEntityAsync(customerRequest, ETag.All);
 
         return !result.IsError;
@@ -48,5 +55,15 @@ public class CustomerRequestRepository : ICustomerRequestRepository
         var result = await _tableClient.AddEntityAsync(customerRequestModel);
 
         return !result.IsError;
+    }
+    
+    private async Task<CustomerRequestModel> GetEntityAsync(string id, string shopId)
+    {
+        var response = await _tableClient.GetEntityAsync<CustomerRequestModel>(shopId, id);
+
+        var customerRequest = response.Value;
+        Ensure.NotNull(customerRequest, nameof(customerRequest));
+        
+        return customerRequest;
     }
 }

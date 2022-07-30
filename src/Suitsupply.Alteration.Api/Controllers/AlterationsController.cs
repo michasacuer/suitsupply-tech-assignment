@@ -21,7 +21,7 @@ public class AlterationsController : BaseSuitsupplyController
     public async Task<GetCustomerRequestByIdResponse> GetCustomerRequestByIdAsync(string id)
         => await Mediator.Send(new GetCustomerRequestByIdQueryDto
         {
-            Id = new Guid(id)
+            Id = id
         });
 
     [HttpPost]
