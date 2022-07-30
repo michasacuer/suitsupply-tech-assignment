@@ -1,5 +1,6 @@
 ﻿using Azure;
 using Azure.Data.Tables;
+using Suitsupply.Alteration.Common.Utils;
 using Suitsupply.Alteration.Domain.CustomerRequestAggregate;
 using Suitsupply.Alteration.Infrastructure.Model;
 
@@ -30,10 +31,13 @@ public class CustomerRequestRepository : ICustomerRequestRepository
 
     public async Task<bool> UpdateCustomerRequestToPaidAsync(string id, string shopId, DateTime paidAt)
     {
-        var customerRequest = await _tableClient.GetEntityAsync<CustomerRequestModel>(shopId, id);
-        customerRequest.Value.Paid(paidAt);
-
-        var result = await _tableClient.UpdateEntityAsync(customerRequest.Value, ETag.All);
+        var response = await _tableClient.GetEntityAsync<CustomerRequestModel>(shopId, id);
+        
+        var customerRequest = response.Value;
+        Ensure.NotNull(customerRequest, nameof(customerRequest));
+        
+        customerRequest.Paid(paidAt);
+        var result = await _tableClient.UpdateEntityAsync(customerRequest, ETag.All);
 
         return !result.IsError;
     }
