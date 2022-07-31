@@ -22,6 +22,6 @@ This business process would be easy to do using Logic App and possibly Function 
 
 PC in store is logged in the name of Azure App Registration that have access to Suitsupply Alteration API. 
 
-![](https://github.com/michasacuer/suitsupply-tech-assignment/blob/main/resources/big-picture.png)
+![](https://github.com/michasacuer/suitsupply-tech-assignment/blob/main/resources/bigpicture.png)
 
 ## LLD (low level design)
