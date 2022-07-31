@@ -21,7 +21,7 @@ public class AlterationFinishedConsumer : IConsumer<AlterationFinishedMessage>
     {
         var message = context.Message;
         Ensure.StringNotNullOrEmpty(message.Id, nameof(message.Id));
-        Ensure.StringNotNullOrEmpty(message.Id, nameof(message.Id));
+        Ensure.StringNotNullOrEmpty(message.ShopId, nameof(message.ShopId));
         Ensure.DateTimeNotEmpty(message.FinishedAt, nameof(message.FinishedAt));
 
         bool isUpdated = await _customerRequestRepository.FinishCustomerRequestAsync(message.Id, message.ShopId, message.FinishedAt);
