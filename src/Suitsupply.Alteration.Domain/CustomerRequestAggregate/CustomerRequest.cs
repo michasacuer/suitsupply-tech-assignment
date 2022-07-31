@@ -78,7 +78,7 @@ public class CustomerRequest : IBaseEntity<Guid>
     {
         if (date < CreatedAt)
         {
-            throw new SuitsupplyBusinessException("Date can't be bigger than request creation date.");
+            throw new SuitsupplyBusinessException(ErrorMessages.DATE_CAN_NOT_BE_BIGGER);
         }
     }
 }

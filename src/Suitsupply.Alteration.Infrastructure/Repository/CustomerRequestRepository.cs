@@ -71,7 +71,7 @@ public class CustomerRequestRepository : ICustomerRequestRepository
         }
         catch (RequestFailedException)
         {
-            throw new SuitsupplyBusinessException("Customer request not found.");
+            throw new SuitsupplyBusinessException(ErrorMessages.CUSTOMER_REQUEST_NOT_FOUND);
         }
     }
 }

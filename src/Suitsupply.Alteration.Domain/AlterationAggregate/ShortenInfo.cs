@@ -31,33 +31,31 @@ public class ShortenInfo : IAlterationInfo
     public string MessageForTailors()
     {
         List<string> alterations = new();
-        string messageFormatShorten = "{0} shorten by {1} centimeters";
-        string messageFormatExtend = "{0} extend by {1} centimeters";
         string separator = ", ";
         string currentFormat;
         
         if (LeftTrouserLegShortenBy != default)
         {
-            currentFormat = LeftTrouserLegShortenBy > 0 ? messageFormatExtend : messageFormatShorten;
-            alterations.Add(string.Format(currentFormat, "Left trouser leg", Math.Abs(LeftTrouserLegShortenBy)));
+            currentFormat = LeftTrouserLegShortenBy > 0 ? InfoMessages.EXTEND_BY_FORMAT : InfoMessages.SHORTEN_BY_FORMAT;
+            alterations.Add(string.Format(currentFormat, InfoMessages.LEFT_TROUSER, Math.Abs(LeftTrouserLegShortenBy)));
         }
         
         if (RightTrouserLegShortenBy != default)
         {
-            currentFormat = RightTrouserLegShortenBy > 0 ? messageFormatExtend : messageFormatShorten;
-            alterations.Add(string.Format(currentFormat, "Right trouser leg", Math.Abs(RightTrouserLegShortenBy)));
+            currentFormat = RightTrouserLegShortenBy > 0 ? InfoMessages.EXTEND_BY_FORMAT : InfoMessages.SHORTEN_BY_FORMAT;
+            alterations.Add(string.Format(currentFormat, InfoMessages.RIGHT_TROUSER, Math.Abs(RightTrouserLegShortenBy)));
         }
         
         if (LeftSleeveShortenBy != default)
         {
-            currentFormat = LeftSleeveShortenBy > 0 ? messageFormatExtend : messageFormatShorten;
-            alterations.Add(string.Format(currentFormat, "Left sleeve", Math.Abs(LeftSleeveShortenBy)));
+            currentFormat = LeftSleeveShortenBy > 0 ? InfoMessages.EXTEND_BY_FORMAT : InfoMessages.SHORTEN_BY_FORMAT;
+            alterations.Add(string.Format(currentFormat, InfoMessages.LEFT_SLEEVE, Math.Abs(LeftSleeveShortenBy)));
         }
         
         if (RightSleeveShortenBy != default)
         {
-            currentFormat = RightSleeveShortenBy > 0 ? messageFormatExtend : messageFormatShorten;
-            alterations.Add(string.Format(currentFormat, "Right sleeve", Math.Abs(RightSleeveShortenBy)));
+            currentFormat = RightSleeveShortenBy > 0 ? InfoMessages.EXTEND_BY_FORMAT : InfoMessages.SHORTEN_BY_FORMAT;
+            alterations.Add(string.Format(currentFormat, InfoMessages.RIGHT_SLEEVE, Math.Abs(RightSleeveShortenBy)));
         }
 
         return string.Join(separator, alterations);
@@ -67,12 +65,12 @@ public class ShortenInfo : IAlterationInfo
     {
         if (IsAllAlternationsEmpty(shortenBy))
         {
-            throw new SuitsupplyBusinessException("No alterations provided.");
+            throw new SuitsupplyBusinessException(ErrorMessages.NO_ALTERATIONS);
         }
 
         if (IsAnyAlternationBiggerThan(MaxAlternationDifferenceInCentimeters, shortenBy))
         {
-            throw new SuitsupplyBusinessException($"Maximum change of +/- {MaxAlternationDifferenceInCentimeters} centimeters is allowed.");
+            throw new SuitsupplyBusinessException(string.Format(ErrorMessages.MAXIMUM_CHANGE_ONLY_ALLOWED_FORMAT, MaxAlternationDifferenceInCentimeters));
         }
     }
 

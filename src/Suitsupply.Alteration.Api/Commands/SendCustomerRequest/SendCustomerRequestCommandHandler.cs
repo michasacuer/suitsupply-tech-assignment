@@ -50,6 +50,6 @@ public class SendCustomerRequestCommandHandler : IRequestHandler<SendCustomerReq
             return Unit.Value;
         }
 
-        throw new SuitsupplyBusinessException("Can't process customer's request.");
+        throw new SuitsupplyBusinessException(ErrorMessages.CAN_NOT_SEND_CUSTOMER_REQUEST);
     }
 }
