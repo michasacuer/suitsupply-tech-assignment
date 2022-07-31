@@ -8,10 +8,10 @@ Swagger: https://app.swaggerhub.com/apis-docs/michasacuer/Suitsupply.alterations
 The only way to post messages to queue/topic is doing it manually by SB Explorer or API.
 
 ## Comment:
-This business process would be easy to do using Logic App and possibly Function app for data validation. It would certainly be a cheaper (no or less code to maintanance).
+This business process would be easy to do using Logic App and possibly Function app for data validation (but not necessarily because in logic app you can put some JavaScript code). It would be much cheaper (no or less code to maintanance) and easier to creat.
 
 ## Used Azure technologies:
-- Active Directory (app registrations)
+- Active Directory (app registrations) with managed identity
 - Application Insights
 - App Service
 - Table Storage
@@ -26,9 +26,11 @@ This business process would be easy to do using Logic App and possibly Function 
 ## Potential improvements:
 - Each employee logs in to the application himself using App registration
 
-![image](https://user-images.githubusercontent.com/37336963/182036143-b49c8707-da2b-432a-a3b3-9d95b627e9f1.png)
-
 ## Big picture:
 
 ![](https://github.com/michasacuer/suitsupply-tech-assignment/blob/main/resources/bigpicture.png)
+
+## RG (with susu naming convention ;D)
+
+![image](https://user-images.githubusercontent.com/37336963/182036143-b49c8707-da2b-432a-a3b3-9d95b627e9f1.png)
 
