@@ -1,4 +1,7 @@
 # Suitsupply tech assignment
+Postman collection in `resources` directory.
+
+Swagger: https://app.swaggerhub.com/apis-docs/michasacuer/Suitsupply.alterations/1-oas3
 
 ## Comment:
 This business process would be easy to do using Logic App and possibly Function app for data validation. It would certainly be a cheaper (no or less code to maintanance).
