@@ -77,5 +77,5 @@ public class SendCustomerRequestCommandHandlerTests
         
         // Act & Assert:
         Assert.Throws<AggregateException>(() => _uut.Handle(request, CancellationToken.None).Result);
-    }
+    }   
 }

@@ -28,7 +28,7 @@ public class CustomerRequestRepository : ICustomerRequestRepository
     }
 
     public async Task<CustomerRequest> GetCustomerRequestByIdAsync(string id, string shopId)
-        => await GetEntityAsync(shopId, id);
+        => await GetEntityAsync(id, shopId);
 
     public async Task<bool> UpdateCustomerRequestToPaidAsync(string id, string shopId, DateTime paidAt)
     {
