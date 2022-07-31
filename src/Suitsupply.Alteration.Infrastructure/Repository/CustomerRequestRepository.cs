@@ -1,5 +1,6 @@
 ﻿using Azure;
 using Azure.Data.Tables;
+using Suitsupply.Alteration.Common.Exceptions;
 using Suitsupply.Alteration.Common.Utils;
 using Suitsupply.Alteration.Domain.CustomerRequestAggregate;
 using Suitsupply.Alteration.Infrastructure.Model;
@@ -27,7 +28,7 @@ public class CustomerRequestRepository : ICustomerRequestRepository
     }
 
     public async Task<CustomerRequest> GetCustomerRequestByIdAsync(string id, string shopId)
-        => await _tableClient.GetEntityAsync<CustomerRequestModel>(shopId, id.ToString());
+        => await GetEntityAsync(shopId, id);
 
     public async Task<bool> UpdateCustomerRequestToPaidAsync(string id, string shopId, DateTime paidAt)
     {
@@ -59,11 +60,18 @@ public class CustomerRequestRepository : ICustomerRequestRepository
     
     private async Task<CustomerRequestModel> GetEntityAsync(string id, string shopId)
     {
-        var response = await _tableClient.GetEntityAsync<CustomerRequestModel>(shopId, id);
+        try
+        {
+            var response = await _tableClient.GetEntityAsync<CustomerRequestModel>(shopId, id);
 
-        var customerRequest = response.Value;
-        Ensure.NotNull(customerRequest, nameof(customerRequest));
+            var customerRequest = response.Value;
+            Ensure.NotNull(customerRequest, nameof(customerRequest));
         
-        return customerRequest;
+            return customerRequest;
+        }
+        catch (RequestFailedException)
+        {
+            throw new SuitsupplyBusinessException("Customer request not found.");
+        }
     }
 }

@@ -67,7 +67,7 @@ public class ShortenInfo : IAlterationInfo
     {
         if (IsAllAlternationsEmpty(shortenBy))
         {
-            throw new SuitsupplyBusinessException("No alternations provided.");
+            throw new SuitsupplyBusinessException("No alterations provided.");
         }
 
         if (IsAnyAlternationBiggerThan(MaxAlternationDifferenceInCentimeters, shortenBy))
