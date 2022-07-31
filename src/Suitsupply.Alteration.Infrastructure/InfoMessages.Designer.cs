@@ -22,14 +22,14 @@ namespace Suitsupply.Alteration.Infrastructure {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ErrorMessages {
+    internal class InfoMessages {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ErrorMessages() {
+        internal InfoMessages() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Suitsupply.Alteration.Infrastructure {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Suitsupply.Alteration.Infrastructure.ErrorMessages", typeof(ErrorMessages).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Suitsupply.Alteration.Infrastructure.InfoMessages", typeof(InfoMessages).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,20 @@ namespace Suitsupply.Alteration.Infrastructure {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Can&apos;t update this entity..
+        ///   Looks up a localized string similar to Alteration finished!.
         /// </summary>
-        internal static string CAN_NOT_UPDATE {
+        internal static string ALTERATION_FINISHED_EMAIL_SUBJECT {
             get {
-                return ResourceManager.GetString("CAN_NOT_UPDATE", resourceCulture);
+                return ResourceManager.GetString("ALTERATION_FINISHED_EMAIL_SUBJECT", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Customer request not found..
+        ///   Looks up a localized string similar to Dear {0} your order is finished..
         /// </summary>
-        internal static string CUSTOMER_REQUEST_NOT_FOUND {
+        internal static string ALTERATION_FINISHED_TEMPLATE_FORMAT {
             get {
-                return ResourceManager.GetString("CUSTOMER_REQUEST_NOT_FOUND", resourceCulture);
+                return ResourceManager.GetString("ALTERATION_FINISHED_TEMPLATE_FORMAT", resourceCulture);
             }
         }
     }

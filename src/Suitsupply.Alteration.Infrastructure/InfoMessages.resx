@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CAN_NOT_UPDATE" xml:space="preserve">
-    <value>Can't update this entity.</value>
+  <data name="ALTERATION_FINISHED_EMAIL_SUBJECT" xml:space="preserve">
+    <value>Alteration finished!</value>
   </data>
-  <data name="CUSTOMER_REQUEST_NOT_FOUND" xml:space="preserve">
-    <value>Customer request not found.</value>
+  <data name="ALTERATION_FINISHED_TEMPLATE_FORMAT" xml:space="preserve">
+    <value>Dear {0} your order is finished.</value>
   </data>
 </root>

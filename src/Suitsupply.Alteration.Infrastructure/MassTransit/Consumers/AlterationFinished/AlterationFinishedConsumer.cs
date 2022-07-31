@@ -27,11 +27,14 @@ public class AlterationFinishedConsumer : IConsumer<AlterationFinishedMessage>
         bool isUpdated = await _customerRequestRepository.FinishCustomerRequestAsync(message.Id, message.ShopId, message.FinishedAt);
         if(!isUpdated)
         {
-            throw new SuitsupplyBusinessException("Can't update entity.");
+            throw new SuitsupplyBusinessException(ErrorMessages.CAN_NOT_UPDATE);
         }
 
         var customerRequest = await _customerRequestRepository.GetCustomerRequestByIdAsync(message.Id, message.ShopId);
         
-        await _emailService.SendEmailAsync(customerRequest.CustomerEmail, $"Dear {customerRequest.CustomerName} your order is finished.", "Alteration finished!");
+        await _emailService.SendEmailAsync(
+            customerRequest.CustomerEmail,
+            string.Format(InfoMessages.ALTERATION_FINISHED_TEMPLATE_FORMAT, customerRequest.CustomerName),
+            InfoMessages.ALTERATION_FINISHED_EMAIL_SUBJECT);
     }
 }
