@@ -1,23 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
-
-    <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
-        <ImplicitUsings>enable</ImplicitUsings>
-    </PropertyGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\Suitsupply.Alteration.Common\Suitsupply.Alteration.Common.csproj" />
-      <ProjectReference Include="..\Suitsupply.Alteration.Domain\Suitsupply.Alteration.Domain.csproj" />
-      <ProjectReference Include="..\Suitsupply.Alteration.Infrastructure\Suitsupply.Alteration.Infrastructure.csproj" />
-      <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.2.2" />
-      <PackageReference Include="Azure.Identity" Version="1.6.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <Content Include="../Suitsupply.Alteration.Api/appsettings.json">
-            <Link>appsettings.json</Link>
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </Content>
-    </ItemGroup>
-
+﻿<Project Sdk="Microsoft.NET.Sdk.Worker;Microsoft.NET.Sdk.Publish">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Suitsupply.Alteration.Common\Suitsupply.Alteration.Common.csproj" />
+    <ProjectReference Include="..\Suitsupply.Alteration.Domain\Suitsupply.Alteration.Domain.csproj" />
+    <ProjectReference Include="..\Suitsupply.Alteration.Infrastructure\Suitsupply.Alteration.Infrastructure.csproj" />
+    <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.2.2" />
+    <PackageReference Include="Azure.Identity" Version="1.6.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="../Suitsupply.Alteration.Api/appsettings.json">
+      <Link>appsettings.json</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

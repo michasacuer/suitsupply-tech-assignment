@@ -4,14 +4,11 @@ on:
     branches:
     - main
 env:
-  AZURE_WEBJOB_NAME: workers
   AZURE_WEBAPP_NAME: apisusu
   AZURE_WEBAPP_PACKAGE_PATH: ./src/Suitsupply.Alteration.Api/published
-  AZURE_WEBJOB_PACKAGE_PATH: ./src/Suitsupply.Alteration.Workers/published
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 6.0.x
   WEBAPP_WORKING_DIRECTORY: ./src/Suitsupply.Alteration.Api
-  WEBJOB_WORKING_DIRECTORY: ./src/Suitsupply.Alteration.Workers
   TEST_DIRECTORY: ./src/Suitsupply.Alteration.Tests
 jobs:
   api:
@@ -41,30 +38,5 @@ jobs:
       with:
         name: webapp
         path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-  webjob:
-    runs-on: windows-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Setup Web Job
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
-    - name: Restore
-      run: dotnet restore "${{ env.WEBJOB_WORKING_DIRECTORY }}"
-    - name: Build
-      run: dotnet build "${{ env.WEBJOB_WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
-    - name: Publish
-      run: dotnet publish "${{ env.WEBJOB_WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output './publish/App_Data/Jobs/Triggered/${{ env.WEBJOB_NAME }}'
-    - name: Deploy to Azure WebApp
-      uses: azure/webapps-deploy@v2
-      with:
-        app-name: ${{ env.AZURE_WEBJOB_NAME }}
-        publish-profile: ${{ secrets.APISUSU_FFFF }}
-        package: ${{ env.AZURE_WEBJOB_PACKAGE_PATH }}
-    - name: Publish Artifacts
-      uses: actions/upload-artifact@v1.0.0
-      with:
-        name: webjob
-        path: ${{ env.AZURE_WEBJOB_PACKAGE_PATH }}
 
 

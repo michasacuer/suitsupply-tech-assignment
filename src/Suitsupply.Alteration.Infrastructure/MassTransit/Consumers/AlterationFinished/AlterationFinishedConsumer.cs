@@ -31,7 +31,6 @@ public class AlterationFinishedConsumer : IConsumer<AlterationFinishedMessage>
         }
 
         var customerRequest = await _customerRequestRepository.GetCustomerRequestByIdAsync(message.Id, message.ShopId);
-        Ensure.NotNull(customerRequest, nameof(customerRequest));
         
         await _emailService.SendEmailAsync(customerRequest.CustomerEmail, $"Dear {customerRequest.CustomerName} your order is finished.", "Alteration finished!");
     }
