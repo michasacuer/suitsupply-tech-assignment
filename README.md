@@ -25,7 +25,6 @@ This business process would be easy to do using Logic App and possibly Function 
 
 ## Potential improvements:
 - Each employee logs in to the application himself using App registration
-- Rate limiter
 
 ## Big picture:
 
