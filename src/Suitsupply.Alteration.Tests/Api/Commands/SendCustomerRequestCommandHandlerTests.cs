@@ -47,7 +47,7 @@ public class SendCustomerRequestCommandHandlerTests
         _customerRequestRepositoryMock
             .Setup(x => x.SendCustomerRequestAsync(It.IsAny<CustomerRequest>()))
             .Callback<CustomerRequest>(x => sendCustomerRequest = x)
-            .ReturnsAsync(true);
+            .ReturnsAsync(new Guid());
         
         // Act:
         _ = _uut.Handle(request, CancellationToken.None).Result;
@@ -74,29 +74,6 @@ public class SendCustomerRequestCommandHandlerTests
             CustomerEmail = email,
             LeftSleeveShortenBy = changeSizeBy
         };
-        
-        // Act & Assert:
-        Assert.Throws<AggregateException>(() => _uut.Handle(request, CancellationToken.None).Result);
-    }
-    
-    [Fact]
-    public void SendCustomerRequestCommandHandler_Handle_CantSendEntity_Throws_SuitSupplyBusinessException()
-    {
-        // Arrange:
-        string name = "name";
-        string email = "email";
-        int changeSizeBy = 1;
-
-        var request = new SendCustomerRequestCommandDto
-        {
-            CustomerName = name,
-            CustomerEmail = email,
-            LeftSleeveShortenBy = changeSizeBy
-        };
-        
-        _customerRequestRepositoryMock
-            .Setup(x => x.SendCustomerRequestAsync(It.IsAny<CustomerRequest>()))
-            .ReturnsAsync(false);
         
         // Act & Assert:
         Assert.Throws<AggregateException>(() => _uut.Handle(request, CancellationToken.None).Result);

@@ -50,12 +50,17 @@ public class CustomerRequestRepository : ICustomerRequestRepository
         return !result.IsError;
     }
 
-    public async Task<bool> SendCustomerRequestAsync(CustomerRequest customerRequest)
+    public async Task<Guid> SendCustomerRequestAsync(CustomerRequest customerRequest)
     {
         var customerRequestModel = new CustomerRequestModel(customerRequest);
         var result = await _tableClient.AddEntityAsync(customerRequestModel);
 
-        return !result.IsError;
+        if (result.IsError)
+        {
+            throw new SuitsupplyBusinessException();
+        }
+
+        return customerRequestModel.Id;
     }
     
     private async Task<CustomerRequestModel> GetEntityAsync(string id, string shopId)

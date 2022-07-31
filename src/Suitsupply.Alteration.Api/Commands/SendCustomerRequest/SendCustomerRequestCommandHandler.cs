@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Newtonsoft.Json;
+using Suitsupply.Alteration.Api.Dtos;
 using Suitsupply.Alteration.Api.Services;
 using Suitsupply.Alteration.Common.Exceptions;
 using Suitsupply.Alteration.Common.Interfaces;
@@ -9,7 +10,7 @@ using Suitsupply.Alteration.Domain.CustomerRequestAggregate;
 
 namespace Suitsupply.Alteration.Api.Commands.SendCustomerRequest;
 
-public class SendCustomerRequestCommandHandler : IRequestHandler<SendCustomerRequestCommandDto>
+public class SendCustomerRequestCommandHandler : IRequestHandler<SendCustomerRequestCommandDto, NewCustomerRequestDto>
 {
     private readonly ICustomerRequestRepository _customerRequestRepository;
     private readonly IHttpContextFacade _httpContextFacade;
@@ -25,7 +26,7 @@ public class SendCustomerRequestCommandHandler : IRequestHandler<SendCustomerReq
         _clock = clock ?? throw new ArgumentNullException(nameof(clock));
     }
 
-    public async Task<Unit> Handle(SendCustomerRequestCommandDto request, CancellationToken cancellationToken)
+    public async Task<NewCustomerRequestDto> Handle(SendCustomerRequestCommandDto request, CancellationToken cancellationToken)
     {
         string appId = _httpContextFacade.GetAppIdFromClaim();
         Ensure.StringNotNullOrEmpty(appId, nameof(appId));
@@ -44,12 +45,11 @@ public class SendCustomerRequestCommandHandler : IRequestHandler<SendCustomerReq
             _clock.Now,
             JsonConvert.SerializeObject(shortenInfo));
 
-        bool isCreated = await _customerRequestRepository.SendCustomerRequestAsync(customerRequest);
-        if (isCreated)
-        {
-            return Unit.Value;
-        }
+        var id = await _customerRequestRepository.SendCustomerRequestAsync(customerRequest);
 
-        throw new SuitsupplyBusinessException(ErrorMessages.CAN_NOT_SEND_CUSTOMER_REQUEST);
+        return new NewCustomerRequestDto
+        {
+            Id = id
+        };
     }
 }

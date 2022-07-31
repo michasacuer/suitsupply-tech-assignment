@@ -10,5 +10,5 @@ public interface ICustomerRequestRepository
     
     Task<bool> FinishCustomerRequestAsync(string id, string shopId, DateTime finishedAt);
 
-    Task<bool> SendCustomerRequestAsync(CustomerRequest customerRequest);
+    Task<Guid> SendCustomerRequestAsync(CustomerRequest customerRequest);
 }
