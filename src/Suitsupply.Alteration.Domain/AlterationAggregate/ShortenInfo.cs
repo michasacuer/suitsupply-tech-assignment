@@ -39,25 +39,25 @@ public class ShortenInfo : IAlterationInfo
         if (_leftTrouserLegShortenBy != default)
         {
             currentFormat = _leftTrouserLegShortenBy > 0 ? messageFormatExtend : messageFormatShorten;
-            alterations.Add(string.Format(currentFormat, "Left trouser leg", _leftTrouserLegShortenBy));
+            alterations.Add(string.Format(currentFormat, "Left trouser leg", Math.Abs(_leftTrouserLegShortenBy)));
         }
         
         if (_rightTrouserLegShortenBy != default)
         {
             currentFormat = _rightTrouserLegShortenBy > 0 ? messageFormatExtend : messageFormatShorten;
-            alterations.Add(string.Format(currentFormat, "Right trouser leg", _rightTrouserLegShortenBy));
+            alterations.Add(string.Format(currentFormat, "Right trouser leg", Math.Abs(_rightTrouserLegShortenBy)));
         }
         
         if (_leftSleeveShortenBy != default)
         {
             currentFormat = _leftSleeveShortenBy > 0 ? messageFormatExtend : messageFormatShorten;
-            alterations.Add(string.Format(currentFormat, "Left sleeve", _leftSleeveShortenBy));
+            alterations.Add(string.Format(currentFormat, "Left sleeve", Math.Abs(_leftSleeveShortenBy)));
         }
         
         if (_rightSleeveShortenBy != default)
         {
             currentFormat = _rightSleeveShortenBy > 0 ? messageFormatExtend : messageFormatShorten;
-            alterations.Add(string.Format(currentFormat, "Right sleeve", _rightSleeveShortenBy));
+            alterations.Add(string.Format(currentFormat, "Right sleeve", Math.Abs(_rightSleeveShortenBy)));
         }
 
         return string.Join(separator, alterations);
