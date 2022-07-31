@@ -17,11 +17,15 @@ public class SendGridEmailService : IEmailService
 
     public async Task SendEmailAsync(string email, string body, string subject)
     {
-        var msg = new SendGridMessage() { PlainTextContent = body };
+        var msg = new SendGridMessage
+        {
+            PlainTextContent = body
+        };
+        
         msg.SetFrom(_configuration["SendGrid:From"], _configuration["SendGrid:FromName"]);
         msg.SetSubject(subject);
         msg.AddTo(email);
         
-        var response = await _sendGridClient.SendEmailAsync(msg);
+        await _sendGridClient.SendEmailAsync(msg);
     }
 }

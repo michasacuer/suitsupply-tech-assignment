@@ -3,6 +3,7 @@ using Azure.Identity;
 using MediatR;
 using Microsoft.Identity.Web;
 using SendGrid.Extensions.DependencyInjection;
+using Serilog;
 using Suitsupply.Alteration.Common.Interfaces;
 using Suitsupply.Alteration.Domain.CustomerRequestAggregate;
 using Suitsupply.Alteration.Infrastructure.Common;
@@ -11,6 +12,8 @@ using Suitsupply.Alteration.Infrastructure.MassTransit;
 using Suitsupply.Alteration.Infrastructure.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog((ctx, loggerConfiguration) => loggerConfiguration.ReadFrom.Configuration(ctx.Configuration));
 
 builder.Services.AddMicrosoftIdentityWebApiAuthentication(builder.Configuration);
 
@@ -52,6 +55,7 @@ else
 
 var app = builder.Build();
 
+app.UseSerilogRequestLogging();
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
