@@ -11,7 +11,7 @@ The only way to post messages to queue/topic is doing it manually by SB Explorer
 This business process would be easy to do using Logic App and possibly Function app for data validation (but not necessarily because in logic app you can put some JavaScript code). It would be much cheaper (no or less code to maintanance) and easier to creat.
 
 ## Used Azure technologies:
-- Active Directory (app registrations)
+- Active Directory (app registrations) with managed identity
 - Application Insights
 - App Service
 - Table Storage
