@@ -14,19 +14,19 @@ public class ShortenInfo : IAlterationInfo
     {
         CheckIfShortenDataIsValid(leftTrouserLegShortenBy, rightTrouserLegShortenBy, leftSleeveShortenBy, rightSleeveShortenBy);
         
-        _leftTrouserLegShortenBy = leftTrouserLegShortenBy;
-        _rightTrouserLegShortenBy = rightTrouserLegShortenBy;
-        _leftSleeveShortenBy = leftSleeveShortenBy;
-        _rightSleeveShortenBy = rightSleeveShortenBy;
+        LeftTrouserLegShortenBy = leftTrouserLegShortenBy;
+        RightTrouserLegShortenBy = rightTrouserLegShortenBy;
+        LeftSleeveShortenBy = leftSleeveShortenBy;
+        RightSleeveShortenBy = rightSleeveShortenBy;
     }
 
-    private readonly int _leftTrouserLegShortenBy;
+    public int LeftTrouserLegShortenBy { get; }
 
-    private readonly int _rightTrouserLegShortenBy;
+    public int RightTrouserLegShortenBy { get; }
 
-    private readonly int _leftSleeveShortenBy;
+    public int LeftSleeveShortenBy { get; }
 
-    private readonly int _rightSleeveShortenBy;
+    public int RightSleeveShortenBy { get; }
     
     public string MessageForTailors()
     {
@@ -36,28 +36,28 @@ public class ShortenInfo : IAlterationInfo
         string separator = ", ";
         string currentFormat;
         
-        if (_leftTrouserLegShortenBy != default)
+        if (LeftTrouserLegShortenBy != default)
         {
-            currentFormat = _leftTrouserLegShortenBy > 0 ? messageFormatExtend : messageFormatShorten;
-            alterations.Add(string.Format(currentFormat, "Left trouser leg", Math.Abs(_leftTrouserLegShortenBy)));
+            currentFormat = LeftTrouserLegShortenBy > 0 ? messageFormatExtend : messageFormatShorten;
+            alterations.Add(string.Format(currentFormat, "Left trouser leg", Math.Abs(LeftTrouserLegShortenBy)));
         }
         
-        if (_rightTrouserLegShortenBy != default)
+        if (RightTrouserLegShortenBy != default)
         {
-            currentFormat = _rightTrouserLegShortenBy > 0 ? messageFormatExtend : messageFormatShorten;
-            alterations.Add(string.Format(currentFormat, "Right trouser leg", Math.Abs(_rightTrouserLegShortenBy)));
+            currentFormat = RightTrouserLegShortenBy > 0 ? messageFormatExtend : messageFormatShorten;
+            alterations.Add(string.Format(currentFormat, "Right trouser leg", Math.Abs(RightTrouserLegShortenBy)));
         }
         
-        if (_leftSleeveShortenBy != default)
+        if (LeftSleeveShortenBy != default)
         {
-            currentFormat = _leftSleeveShortenBy > 0 ? messageFormatExtend : messageFormatShorten;
-            alterations.Add(string.Format(currentFormat, "Left sleeve", Math.Abs(_leftSleeveShortenBy)));
+            currentFormat = LeftSleeveShortenBy > 0 ? messageFormatExtend : messageFormatShorten;
+            alterations.Add(string.Format(currentFormat, "Left sleeve", Math.Abs(LeftSleeveShortenBy)));
         }
         
-        if (_rightSleeveShortenBy != default)
+        if (RightSleeveShortenBy != default)
         {
-            currentFormat = _rightSleeveShortenBy > 0 ? messageFormatExtend : messageFormatShorten;
-            alterations.Add(string.Format(currentFormat, "Right sleeve", Math.Abs(_rightSleeveShortenBy)));
+            currentFormat = RightSleeveShortenBy > 0 ? messageFormatExtend : messageFormatShorten;
+            alterations.Add(string.Format(currentFormat, "Right sleeve", Math.Abs(RightSleeveShortenBy)));
         }
 
         return string.Join(separator, alterations);
