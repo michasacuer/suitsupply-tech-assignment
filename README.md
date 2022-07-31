@@ -8,7 +8,7 @@ Swagger: https://app.swaggerhub.com/apis-docs/michasacuer/Suitsupply.alterations
 The only way to post messages to queue/topic is doing it manually by SB Explorer or API.
 
 ## Comment:
-This business process would be easy to do using Logic App and possibly Function app for data validation. It would certainly be a cheaper (no or less code to maintanance).
+This business process would be easy to do using Logic App and possibly Function app for data validation (but not necessarily because in logic app you can put some JavaScript code). It would be much cheaper (no or less code to maintanance) and easier to creat.
 
 ## Used Azure technologies:
 - Active Directory (app registrations)
