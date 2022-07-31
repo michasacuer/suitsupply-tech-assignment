@@ -2,5 +2,5 @@
 
 public class NewCustomerRequestDto
 {
-    public Guid Id { get; set; }
+    public Guid NewCustomerRequestId { get; set; }
 }

@@ -49,7 +49,7 @@ public class SendCustomerRequestCommandHandler : IRequestHandler<SendCustomerReq
 
         return new NewCustomerRequestDto
         {
-            Id = id
+            NewCustomerRequestId = id
         };
     }
 }

@@ -126,7 +126,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"customerName\": \"Michal Szewczak\",\r\n    \"customerEmail\": \"michalszewczak2@gmail.com\",\r\n    \"leftTrouserLegShortenBy\": 1,\r\n    \"rightTrouserLegShortenBy\": 5,\r\n    \"leftSleeveShortenBy\": -1,\r\n    \"rightSleeveShortenBy\": -4\r\n}",
+							"raw": "{\r\n    \"customerName\": \"Michał Szewczak\",\r\n    \"customerEmail\": \"michasacuer7@gmail.com\",\r\n    \"leftTrouserLegShortenBy\": -5,\r\n    \"rightTrouserLegShortenBy\": 5,\r\n    \"leftSleeveShortenBy\": 2,\r\n    \"rightSleeveShortenBy\": -3\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -221,73 +221,6 @@
 		{
 			"name": "Debug",
 			"item": [
-				{
-					"name": "Healthcheck",
-					"request": {
-						"auth": {
-							"type": "oauth2",
-							"oauth2": [
-								{
-									"key": "clientId",
-									"value": "4cb86f8c-c6d7-49f6-8630-d3e0ad91315e",
-									"type": "string"
-								},
-								{
-									"key": "clientSecret",
-									"value": "3JO8Q~5CFIQ~6HAN~RtDrTQNfZz1HeEeBcJhwbLK",
-									"type": "string"
-								},
-								{
-									"key": "scope",
-									"value": "api://c01f9512-2ecf-460a-a376-fadd97c0f361/.default",
-									"type": "string"
-								},
-								{
-									"key": "accessTokenUrl",
-									"value": "https://login.microsoftonline.com/4de323ca-14ff-4557-9dde-45c4c10ddef4/oauth2/v2.0/token",
-									"type": "string"
-								},
-								{
-									"key": "tokenName",
-									"value": "Suitsupply-api-appreg",
-									"type": "string"
-								},
-								{
-									"key": "grant_type",
-									"value": "client_credentials",
-									"type": "string"
-								},
-								{
-									"key": "authUrl",
-									"value": "https://login.microsoftonline.com/801726ae-81e0-4bfe-8cd9-59b3130c0995/oauth2/v2.0/token",
-									"type": "string"
-								},
-								{
-									"key": "addTokenTo",
-									"value": "header",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "https://apisusu.azurewebsites.net/api/alterations/healthcheck",
-							"protocol": "https",
-							"host": [
-								"apisusu",
-								"azurewebsites",
-								"net"
-							],
-							"path": [
-								"api",
-								"alterations",
-								"healthcheck"
-							]
-						}
-					},
-					"response": []
-				},
 				{
 					"name": "Send message to FinishedAlteration queue",
 					"request": {
