@@ -24,6 +24,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Suitsupply.Alteration.Api\Suitsupply.Alteration.Api.csproj" />
       <ProjectReference Include="..\Suitsupply.Alteration.Domain\Suitsupply.Alteration.Domain.csproj" />
     </ItemGroup>
 

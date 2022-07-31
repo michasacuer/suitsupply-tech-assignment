@@ -4,7 +4,9 @@ namespace Suitsupply.Alteration.Api.Dtos;
 
 public class CustomerRequestDto
 {
-    public Guid Id { get; set; } 
+    public Guid Id { get; set; }
+
+    public string ShopId { get; set; }
 
     public string CustomerName { get; set; } 
 

@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.Identity.Web;
 using Serilog;
+using Suitsupply.Alteration.Api.Services;
 using Suitsupply.Alteration.Infrastructure.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,7 @@ builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<IHttpContextFacade, HttpContextFacade>();
 
 builder.Services.AddApplicationInsightsTelemetry();
 

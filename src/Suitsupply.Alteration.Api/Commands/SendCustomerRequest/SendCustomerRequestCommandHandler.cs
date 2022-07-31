@@ -1,7 +1,6 @@
-﻿using MassTransit;
-using MediatR;
+﻿using MediatR;
 using Newtonsoft.Json;
-using Suitsupply.Alteration.Api.Extensions;
+using Suitsupply.Alteration.Api.Services;
 using Suitsupply.Alteration.Common.Exceptions;
 using Suitsupply.Alteration.Common.Interfaces;
 using Suitsupply.Alteration.Common.Utils;
@@ -13,22 +12,22 @@ namespace Suitsupply.Alteration.Api.Commands.SendCustomerRequest;
 public class SendCustomerRequestCommandHandler : IRequestHandler<SendCustomerRequestCommandDto>
 {
     private readonly ICustomerRequestRepository _customerRequestRepository;
-    private readonly IHttpContextAccessor _httpContextAccessor;
+    private readonly IHttpContextFacade _httpContextFacade;
     private readonly IClock _clock;
 
     public SendCustomerRequestCommandHandler(
         ICustomerRequestRepository customerRequestRepository,
-        IHttpContextAccessor httpContextAccessor,
+        IHttpContextFacade httpContextFacade,
         IClock clock)
     {
         _customerRequestRepository = customerRequestRepository ?? throw new ArgumentNullException(nameof(customerRequestRepository));
-        _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
+        _httpContextFacade = httpContextFacade ?? throw new ArgumentNullException(nameof(httpContextFacade));
         _clock = clock ?? throw new ArgumentNullException(nameof(clock));
     }
 
     public async Task<Unit> Handle(SendCustomerRequestCommandDto request, CancellationToken cancellationToken)
     {
-        string appId = _httpContextAccessor.HttpContext.GetAppIdFromClaim();
+        string appId = _httpContextFacade.GetAppIdFromClaim();
         Ensure.StringNotNullOrEmpty(appId, nameof(appId));
         
         var shortenInfo = new ShortenInfo(

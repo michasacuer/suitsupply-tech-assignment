@@ -19,12 +19,12 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
+    - name: Test
+      run: dotnet test "${{ env.TEST_DIRECTORY }}"
     - name: Restore
       run: dotnet restore "${{ env.WEBAPP_WORKING_DIRECTORY }}"
     - name: Build
       run: dotnet build "${{ env.WEBAPP_WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
-    - name: Test
-      run: dotnet test "${{ env.TEST_DIRECTORY }}"
     - name: Publish
       run: dotnet publish "${{ env.WEBAPP_WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
     - name: Deploy to Azure WebApp
