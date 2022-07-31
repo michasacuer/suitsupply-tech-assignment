@@ -60,11 +60,11 @@ jobs:
       with:
         app-name: ${{ env.AZURE_WEBJOB_NAME }}
         publish-profile: ${{ secrets.APISUSU_FFFF }}
-        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        package: ${{ env.AZURE_WEBJOB_PACKAGE_PATH }}
     - name: Publish Artifacts
       uses: actions/upload-artifact@v1.0.0
       with:
-        name: webapp
-        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        name: webjob
+        path: ${{ env.AZURE_WEBJOB_PACKAGE_PATH }}
 
 
