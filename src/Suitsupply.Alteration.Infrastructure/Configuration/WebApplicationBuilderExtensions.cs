@@ -10,6 +10,7 @@ public static class WebApplicationBuilderExtensions
         builder.Host.UseSerilogFromConfigurationFile();
         builder.Configuration.AddKeyVault(builder.Configuration);
         builder.Services.AddTableStorageRepository(builder.Configuration);
+        builder.Services.AddMassTransitForSender(builder.Configuration);
         builder.Services.AddClock(builder.Environment.IsDevelopment());
     }
 

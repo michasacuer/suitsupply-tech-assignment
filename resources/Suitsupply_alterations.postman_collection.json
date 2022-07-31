@@ -287,6 +287,158 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Send message to FinishedAlteration queue",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "clientId",
+									"value": "4cb86f8c-c6d7-49f6-8630-d3e0ad91315e",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "3JO8Q~5CFIQ~6HAN~RtDrTQNfZz1HeEeBcJhwbLK",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "api://c01f9512-2ecf-460a-a376-fadd97c0f361/.default",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://login.microsoftonline.com/4de323ca-14ff-4557-9dde-45c4c10ddef4/oauth2/v2.0/token",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "Suitsupply-api-appreg",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "https://login.microsoftonline.com/801726ae-81e0-4bfe-8cd9-59b3130c0995/oauth2/v2.0/token",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"39ea72ef-4ec5-4b3f-849d-a63e4ed05108\",\r\n    \"shopId\": \"4cb86f8c-c6d7-49f6-8630-d3e0ad91315e\",\r\n    \"finishedAt\": \"2022-07-31T14:15:43.3489961Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://apisusu.azurewebsites.net/api/debug/send-to-finished-alteration-queue",
+							"protocol": "https",
+							"host": [
+								"apisusu",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"debug",
+								"send-to-finished-alteration-queue"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Send message to OrderPaid topic",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "clientId",
+									"value": "4cb86f8c-c6d7-49f6-8630-d3e0ad91315e",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "3JO8Q~5CFIQ~6HAN~RtDrTQNfZz1HeEeBcJhwbLK",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "api://c01f9512-2ecf-460a-a376-fadd97c0f361/.default",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://login.microsoftonline.com/4de323ca-14ff-4557-9dde-45c4c10ddef4/oauth2/v2.0/token",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "Suitsupply-api-appreg",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "https://login.microsoftonline.com/801726ae-81e0-4bfe-8cd9-59b3130c0995/oauth2/v2.0/token",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"39ea72ef-4ec5-4b3f-849d-a63e4ed05108\",\r\n    \"shopId\": \"4cb86f8c-c6d7-49f6-8630-d3e0ad91315e\",\r\n    \"paidAt\": \"2022-07-31T14:15:43.3489961Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://apisusu.azurewebsites.net/api/debug/send-to-order-paid-topic",
+							"protocol": "https",
+							"host": [
+								"apisusu",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"debug",
+								"send-to-order-paid-topic"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

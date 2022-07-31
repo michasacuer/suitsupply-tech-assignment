@@ -80,4 +80,16 @@ internal static class ServiceCollectionExtensions
             });
         });
     }
+    
+    internal static void AddMassTransitForSender(this IServiceCollection services, IConfiguration config)
+    {
+        services.AddMassTransit(x =>
+        {
+            x.UsingAzureServiceBus((ctx, cfg) =>
+            {
+                cfg.Host(config.GetConnectionString("ServiceBus"));
+                cfg.AddDeserializer(new SystemTextJsonRawMessageSerializerFactory());
+            });
+        });
+    }
 }
