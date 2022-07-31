@@ -1,7 +1,7 @@
 ﻿using Suitsupply.Alteration.Common.Exceptions;
 using Suitsupply.Alteration.Domain.AlterationAggregate;
 
-namespace Suitsupply.Alteration.Tests.Domain.AlterationAggregateTests;
+namespace Suitsupply.Alteration.Tests.Domain.AlterationAggregate;
 
 public class ShortenInfoTests
 {

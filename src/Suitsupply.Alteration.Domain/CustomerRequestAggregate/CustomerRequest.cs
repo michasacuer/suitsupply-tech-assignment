@@ -7,6 +7,10 @@ namespace Suitsupply.Alteration.Domain.CustomerRequestAggregate;
 
 public class CustomerRequest : IBaseEntity<Guid>
 {
+    private bool IsPaidOrNotAccepted => IsPaid || Status != RequestStatus.Accepted;
+
+    private bool IsNotPaidOrNotStarted => !IsPaid || Status != RequestStatus.Started;
+    
     protected CustomerRequest()
     {
     }
@@ -57,7 +61,7 @@ public class CustomerRequest : IBaseEntity<Guid>
 
     public void Paid(DateTime paidAt)
     {
-        if (IsPaid || Status != RequestStatus.Accepted)
+        if (IsPaidOrNotAccepted)
         {
             throw new SuitsupplyBusinessException(ErrorMessages.PAID_OR_WRONG_STATUS);
         }
@@ -72,7 +76,7 @@ public class CustomerRequest : IBaseEntity<Guid>
 
     public void Finished(DateTime finishedAt)
     {
-        if (!IsPaid || Status != RequestStatus.Started)
+        if (IsNotPaidOrNotStarted)
         {
             throw new SuitsupplyBusinessException(ErrorMessages.FINISHED_OR_WRONG_STATUS);
         }

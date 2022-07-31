@@ -24,7 +24,7 @@ public class OrderPaidConsumer : IConsumer<OrderPaidMessage>
         bool isUpdated = await _customerRequestRepository.UpdateCustomerRequestToPaidAsync(message.Id, message.ShopId, message.PaidAt);
         if (!isUpdated)
         {
-            throw new SuitsupplyBusinessException("Can't update customer's request.");
+            throw new SuitsupplyBusinessException(ErrorMessages.CAN_NOT_UPDATE);
         }
     }
 }
