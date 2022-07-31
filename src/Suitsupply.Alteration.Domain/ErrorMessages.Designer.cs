@@ -70,6 +70,15 @@ namespace Suitsupply.Alteration.Domain {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Customer request is not paid or have status diffrent than started..
+        /// </summary>
+        internal static string FINISHED_OR_WRONG_STATUS {
+            get {
+                return ResourceManager.GetString("FINISHED_OR_WRONG_STATUS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maximum change of +/- {0} centimeters is allowed..
         /// </summary>
         internal static string MAXIMUM_CHANGE_ONLY_ALLOWED_FORMAT {
@@ -84,6 +93,15 @@ namespace Suitsupply.Alteration.Domain {
         internal static string NO_ALTERATIONS {
             get {
                 return ResourceManager.GetString("NO_ALTERATIONS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Customer request is paid or have status diffrent than accepted..
+        /// </summary>
+        internal static string PAID_OR_WRONG_STATUS {
+            get {
+                return ResourceManager.GetString("PAID_OR_WRONG_STATUS", resourceCulture);
             }
         }
     }

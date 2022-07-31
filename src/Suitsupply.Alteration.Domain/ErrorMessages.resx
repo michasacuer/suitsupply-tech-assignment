@@ -120,10 +120,16 @@
   <data name="DATE_CAN_NOT_BE_BIGGER" xml:space="preserve">
     <value>Date can't be bigger than request creation date.</value>
   </data>
+  <data name="FINISHED_OR_WRONG_STATUS" xml:space="preserve">
+    <value>Customer request is not paid or have status diffrent than started.</value>
+  </data>
   <data name="MAXIMUM_CHANGE_ONLY_ALLOWED_FORMAT" xml:space="preserve">
     <value>Maximum change of +/- {0} centimeters is allowed.</value>
   </data>
   <data name="NO_ALTERATIONS" xml:space="preserve">
     <value>No alterations provided.</value>
+  </data>
+  <data name="PAID_OR_WRONG_STATUS" xml:space="preserve">
+    <value>Customer request is paid or have status diffrent than accepted.</value>
   </data>
 </root>

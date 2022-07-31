@@ -59,7 +59,7 @@ public class CustomerRequest : IBaseEntity<Guid>
     {
         if (IsPaid || Status != RequestStatus.Accepted)
         {
-            throw new SuitsupplyBusinessException();
+            throw new SuitsupplyBusinessException(ErrorMessages.PAID_OR_WRONG_STATUS);
         }
         
         Ensure.DateTimeNotEmpty(paidAt, nameof(paidAt));
@@ -74,7 +74,7 @@ public class CustomerRequest : IBaseEntity<Guid>
     {
         if (!IsPaid || Status != RequestStatus.Started)
         {
-            throw new SuitsupplyBusinessException();
+            throw new SuitsupplyBusinessException(ErrorMessages.FINISHED_OR_WRONG_STATUS);
         }
         
         Ensure.DateTimeNotEmpty(finishedAt, nameof(finishedAt));
