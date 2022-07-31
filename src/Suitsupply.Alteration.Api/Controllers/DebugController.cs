@@ -23,7 +23,7 @@ public class DebugController : ControllerBase
     [Route("api/debug/send-to-finished-alteration-queue")]
     public async Task<IActionResult> SendToQueueAsync([FromBody] AlterationFinishedMessage msg)
     {
-        // only for debugging!
+        // only for debugging! I know hard coding is ugly but it exist only for playing with that
         var endpoint = await _sendEndpointProvider.GetSendEndpoint(
             new Uri($"queue:{_configuration["ServiceBus:AlterationFinishedInputQueue"]}"));
         
@@ -37,9 +37,9 @@ public class DebugController : ControllerBase
     [Route("api/debug/send-to-order-paid-topic")]
     public async Task<IActionResult> SendToTopic([FromBody] OrderPaidMessage msg)
     {
-        // only for debugging!
+        // only for debugging! I know hard coding is ugly but it exist only for playing with that
         var endpoint = await _sendEndpointProvider.GetSendEndpoint(
-            new Uri("topic:suitsupply.alteration.infrastructure.masstransit.consumers.orderpaid~orderpaidmessage/order-paid-webjob"));
+            new Uri("topic:suitsupply.alteration.infrastructure.masstransit.consumers.orderpaid/orderpaidmessage"));
         
         await endpoint.Send(msg);
 
