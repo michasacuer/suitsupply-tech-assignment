@@ -27,6 +27,7 @@ This business process would be easy to do using Logic App and possibly Function 
 
 ## Potential improvements:
 - Each employee logs in to the application himself using App registration
+- Docker support & integration with Azure Container Registry to more fluent deployment 
 - Instead of app service WebJob; go with `BackgroundService` in `API` deployment
 
 ## Big picture:
