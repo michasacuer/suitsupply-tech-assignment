@@ -61,11 +61,11 @@ namespace Suitsupply.Alteration.Domain {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Date can&apos;t be bigger than request creation date..
+        ///   Looks up a localized string similar to Date can&apos;t be smaller than request creation date..
         /// </summary>
-        internal static string DATE_CAN_NOT_BE_BIGGER {
+        internal static string DATE_CAN_NOT_BE_SMALLER {
             get {
-                return ResourceManager.GetString("DATE_CAN_NOT_BE_BIGGER", resourceCulture);
+                return ResourceManager.GetString("DATE_CAN_NOT_BE_SMALLER", resourceCulture);
             }
         }
         
