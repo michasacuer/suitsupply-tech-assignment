@@ -1,4 +1,6 @@
 # Suitsupply tech assignment
+![apisusu](https://github.com/michasacuer/suitsupply-tech-assignment/actions/workflows/apisusu.yml/badge.svg)
+
 Postman collection in `resources` directory.
 
 Swagger: https://app.swaggerhub.com/apis-docs/michasacuer/Suitsupply.alterations/1-oas3
