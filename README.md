@@ -33,6 +33,25 @@ This business process would be easy to do using Logic App and possibly Function 
 - Instead of app service WebJob; go with `BackgroundService` in `API` deployment (hosted service).
 - Email templates to HTML; can use RazorViewEngine to produce fancy parametrized emails
 
+## Local development:
+
+Go to `Suitsupply.Alteration.Api` direcory and init user secrets:
+
+```powershell
+dotnet user-secrets init
+
+dotnet user-secrets set "secret" "value"
+```
+
+Or setup Azure resources on your own subscription and login into Azure through cli:
+
+```powershell
+az login
+```
+
+`DefaultAzureCredential` used in solution will automatically find credentials. It will lookup for credentials in sequence mentioned here: https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet
+
+
 ## Big picture:
 
 ![](https://github.com/michasacuer/suitsupply-tech-assignment/blob/main/resources/bigpicture.png)
