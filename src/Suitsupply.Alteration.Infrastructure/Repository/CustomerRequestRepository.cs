@@ -23,8 +23,8 @@ public class CustomerRequestRepository : ICustomerRequestRepository
         {
             response.Add(entity);
         }
-
-        return response;
+        
+        return response.OrderByDescending(x => x.CreatedAt).ToList();
     }
 
     public async Task<CustomerRequest> GetCustomerRequestByIdAsync(string id, string shopId)
