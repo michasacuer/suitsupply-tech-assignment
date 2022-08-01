@@ -31,6 +31,7 @@ This business process would be easy to do using Logic App and possibly Function 
 - Each employee logs in to the application himself using App registration instead of using pre-logged-in device as service principal.
 - Docker support & integration with Azure Container Registry to more fluent deployment.
 - Instead of app service WebJob; go with `BackgroundService` in `API` deployment (hosted service).
+- Email templates to HTML; can use RazorViewEngine to produce fancy parametrized emails
 
 ## Big picture:
 
