@@ -1,0 +1,157 @@
+openapi: 3.0.0
+info:
+  title: Suitsupply alterations
+  version: 1.0.0
+servers:
+  - url: https://apisusu.azurewebsites.net
+components:
+  securitySchemes:
+    oauth2Auth:
+      type: http
+      scheme: oauth2
+tags:
+  - name: Alterations
+  - name: Debug
+paths:
+  /api/alterations:
+    get:
+      tags:
+        - Alterations
+      summary: Get shop's requests
+      security:
+        - oauth2Auth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Alterations
+      summary: Send new alteration
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                customerName: Michał Szewczak
+                customerEmail: michasacuer7@gmail.com
+                leftTrouserLegShortenBy: -5
+                rightTrouserLegShortenBy: 5
+                leftSleeveShortenBy: 2
+                rightSleeveShortenBy: -3
+      security:
+        - oauth2Auth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/alterations/{id}:
+    get:
+      tags:
+        - Alterations
+      summary: Get customer request by Id
+      security:
+        - oauth2Auth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/debug/send-to-finished-alteration-queue:
+    post:
+      tags:
+        - Debug
+      summary: Send message to FinishedAlteration queue
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                id: 39ea72ef-4ec5-4b3f-849d-a63e4ed05108
+                shopId: 4cb86f8c-c6d7-49f6-8630-d3e0ad91315e
+                finishedAt: '2022-07-31T14:15:43.3489961Z'
+      security:
+        - oauth2Auth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/debug/send-to-order-paid-topic:
+    post:
+      tags:
+        - Debug
+      summary: Send message to OrderPaid topic
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                id: 39ea72ef-4ec5-4b3f-849d-a63e4ed05108
+                shopId: 4cb86f8c-c6d7-49f6-8630-d3e0ad91315e
+                paidAt: '2022-07-31T14:15:43.3489961Z'
+      security:
+        - oauth2Auth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/debug/current-time:
+    get:
+      tags:
+        - Debug
+      summary: Get current server time
+      security:
+        - oauth2Auth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/debug/add-to-now:
+    post:
+      tags:
+        - Debug
+      summary: Add time to current server time
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                hoursToAdd: '-1'
+                daysToAdd: '2'
+                monthsToAdd: '-1'
+      security:
+        - oauth2Auth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/debug/reset-time-to-utcnow:
+    post:
+      tags:
+        - Debug
+      summary: Reset time to Now
+      requestBody:
+        content: {}
+      security:
+        - oauth2Auth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}

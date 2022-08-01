@@ -25,7 +25,9 @@ internal static class ServiceCollectionExtensions
         }
         else
         {
-            services.AddSingleton<IClock, Clock>();
+            // in production environment use Clock instead of DebugClock
+            // services.AddSingleton<IClock, Clock>();
+            services.AddSingleton<IClock, DebugClock>();
         }
     }
 

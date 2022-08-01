@@ -4,7 +4,7 @@ namespace Suitsupply.Alteration.Infrastructure.Common;
 
 public class DebugClock : IClock
 {
-    private TimeSpan _offset;
+    private TimeSpan _offset = new TimeSpan();
 
     public DateTime Now => DateTime.UtcNow + _offset;
 

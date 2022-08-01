@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "c9469576-50b4-4d1d-84bd-faa9a6a8503c",
+		"_postman_id": "698e482a-189b-4118-90a8-bdc37d44d13e",
 		"name": "Suitsupply alterations",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -368,6 +368,216 @@
 								"api",
 								"debug",
 								"send-to-order-paid-topic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get current server time",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "clientId",
+									"value": "4cb86f8c-c6d7-49f6-8630-d3e0ad91315e",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "3JO8Q~5CFIQ~6HAN~RtDrTQNfZz1HeEeBcJhwbLK",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "api://c01f9512-2ecf-460a-a376-fadd97c0f361/.default",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://login.microsoftonline.com/4de323ca-14ff-4557-9dde-45c4c10ddef4/oauth2/v2.0/token",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "Suitsupply-api-appreg",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "https://login.microsoftonline.com/801726ae-81e0-4bfe-8cd9-59b3130c0995/oauth2/v2.0/token",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://apisusu.azurewebsites.net/api/debug/current-time",
+							"protocol": "https",
+							"host": [
+								"apisusu",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"debug",
+								"current-time"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add time to current server time",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "clientId",
+									"value": "4cb86f8c-c6d7-49f6-8630-d3e0ad91315e",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "3JO8Q~5CFIQ~6HAN~RtDrTQNfZz1HeEeBcJhwbLK",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "api://c01f9512-2ecf-460a-a376-fadd97c0f361/.default",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://login.microsoftonline.com/4de323ca-14ff-4557-9dde-45c4c10ddef4/oauth2/v2.0/token",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "Suitsupply-api-appreg",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "https://login.microsoftonline.com/801726ae-81e0-4bfe-8cd9-59b3130c0995/oauth2/v2.0/token",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"hoursToAdd\": \"-1\",\r\n    \"daysToAdd\": \"2\",\r\n    \"monthsToAdd\": \"-1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://apisusu.azurewebsites.net/api/debug/add-to-now",
+							"protocol": "https",
+							"host": [
+								"apisusu",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"debug",
+								"add-to-now"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset time to Now",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "clientId",
+									"value": "4cb86f8c-c6d7-49f6-8630-d3e0ad91315e",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "3JO8Q~5CFIQ~6HAN~RtDrTQNfZz1HeEeBcJhwbLK",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "api://c01f9512-2ecf-460a-a376-fadd97c0f361/.default",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://login.microsoftonline.com/4de323ca-14ff-4557-9dde-45c4c10ddef4/oauth2/v2.0/token",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "Suitsupply-api-appreg",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "https://login.microsoftonline.com/801726ae-81e0-4bfe-8cd9-59b3130c0995/oauth2/v2.0/token",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://apisusu.azurewebsites.net/api/debug/reset-time-to-utcnow",
+							"protocol": "https",
+							"host": [
+								"apisusu",
+								"azurewebsites",
+								"net"
+							],
+							"path": [
+								"api",
+								"debug",
+								"reset-time-to-utcnow"
 							]
 						}
 					},
