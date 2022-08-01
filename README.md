@@ -7,7 +7,7 @@ Swagger: https://app.swaggerhub.com/apis-docs/michasacuer/Suitsupply.alterations
 
 (client credentials in postman collection)
 
-The only way to post messages to queue/topic is doing it manually by SB Explorer or API.
+Debug controller made for testing ;D
 
 ## Comment:
 I mainly focused on the architecture and tried to understand the problem to be solved that the user is facing.
