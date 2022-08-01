@@ -53,7 +53,7 @@ az login
 `DefaultAzureCredential` used in solution will automatically find credentials. It will lookup for credentials in sequence mentioned here: https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet
 
 
-## Big picture:
+## Architecture big picture:
 
 ![](https://github.com/michasacuer/suitsupply-tech-assignment/blob/main/resources/bigpicture.png)
 
