@@ -7,9 +7,9 @@ namespace Suitsupply.Alteration.Domain.CustomerRequestAggregate;
 
 public class CustomerRequest : IBaseEntity<Guid>
 {
-    private bool IsPaidOrNotAccepted => IsPaid || Status != RequestStatus.Accepted;
+    private bool IsPaidOrNotAccepted => IsPaid || (Status == RequestStatus.Finished || Status == RequestStatus.Started);
 
-    private bool IsNotPaidOrNotStarted => !IsPaid || Status != RequestStatus.Started;
+    private bool IsNotPaidOrNotStarted => !IsPaid || (Status == RequestStatus.Accepted || Status == RequestStatus.Finished);
     
     protected CustomerRequest()
     {
