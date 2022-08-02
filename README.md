@@ -28,11 +28,32 @@ This business process would be easy to do using Logic App and possibly Function 
 - webjob deployed manually because of Github actions restrictions.
 
 ## Potential improvements:
+- LLD and HLD diagrams (low/high level design)
 - Each employee logs in to the application himself using App registration instead of using pre-logged-in device as service principal.
 - Docker support & integration with Azure Container Registry to more fluent deployment.
 - Instead of app service WebJob; go with `BackgroundService` in `API` deployment (hosted service).
+- Email templates to HTML; can use RazorViewEngine to produce fancy parametrized emails
 
-## Big picture:
+## Local development:
+
+Go to `Suitsupply.Alteration.Api` direcory and init user secrets:
+
+```powershell
+dotnet user-secrets init
+
+dotnet user-secrets set "secret" "value"
+```
+
+Or setup Azure resources on your own subscription and login into Azure through cli:
+
+```powershell
+az login
+```
+
+`DefaultAzureCredential` used in solution will automatically find credentials. It will lookup for credentials in sequence mentioned here: https://docs.microsoft.com/en-us/dotnet/api/azure.identity.defaultazurecredential?view=azure-dotnet
+
+
+## Architecture big picture:
 
 ![](https://github.com/michasacuer/suitsupply-tech-assignment/blob/main/resources/bigpicture.png)
 
