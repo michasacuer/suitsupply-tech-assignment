@@ -1,13 +1,4 @@
 # Suitsupply tech assignment
-![apisusu](https://github.com/michasacuer/suitsupply-tech-assignment/actions/workflows/apisusu.yml/badge.svg)
-
-Postman collection in `resources` directory.
-
-Swagger: https://app.swaggerhub.com/apis-docs/michasacuer/Suitsupply.alterations/1-oas3
-
-(client credentials in postman collection)
-
-Debug controller made for testing ;D
 
 ## Comment:
 I mainly focused on the architecture and tried to understand the problem to be solved that the user is facing.
